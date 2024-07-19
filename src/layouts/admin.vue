@@ -10,7 +10,7 @@
                     <TheContent class="" />
                 </a-layout-content>
 
-                <a-layout-footer class="mt-5 text-center bg-[#]" :style="footerStyle">
+                <a-layout-footer class="text-center bg-[#]" :style="footerStyle">
                     <div class="text-white text-lg">
                         Chiến binh QTLAND
                     </div>

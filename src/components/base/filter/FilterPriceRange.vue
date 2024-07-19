@@ -84,10 +84,10 @@
             class="filter-item-content"
             @click="setModalPriceRangeVisible(true)"
         >
-            <div class="flex">
+            <div class="flex justify-between">
                 <div>Mức giá</div>
                 <div
-                    class="ml-2 flex align-items-center"
+                    class="mr-2 flex align-items-center"
                     v-if="props.type === 'user'"
                 >
                     <DownOutlined />
@@ -192,7 +192,7 @@ const computedRangePrice = computed(() => {
     const isMaxPriceMax = maxPrice === 60000;
 
     if (isMinPriceZero && isMaxPriceMax) {
-        return "Tất cả";
+        return "";
     }
 
     const formatPrice = (price) => {

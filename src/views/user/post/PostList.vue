@@ -1,13 +1,8 @@
 <template>
-    <a-modal v-model:open="openBanner" :footer="null" width="1000px" height="500px" class="banner top-[30%] md:top-[20%] lg:top-[15%]">
-        <a-image :src="apiURL.URL+'/storage/upload/images/banners/qc.jpg'" alt="Banner" class="w-full" :preview="false" />
-    </a-modal>
+    <!-- <a-modal v-model:open="openBanner" :footer="null" width="1000px" height="500px" class="banner top-[30%] md:top-[20%] lg:top-[15%]">
+            <a-image :src="apiURL.URL+'/storage/upload/images/banners/qc.jpg'" alt="Banner" class="w-full" :preview="false" />
+        </a-modal> -->
     <!-- begin::Primary Content -->
-    <div class="effect5">
-        <h2 class="text5 text-lg w-full text-center left-[50%] top-[220px] lg:top-[21%] lg:text-2xl text-rose-500" ref="text5">
-            QTLAND Số 1 bất động sản
-        </h2>
-    </div>
     <div class="flex flex-col col-12 col-xl-10 relative">
         <div class="w-full mt-20 lg:mt-10">
             <!-- <ThePageHeader /> -->
@@ -30,12 +25,12 @@
         <!-- end::Content Navbar -->
     
         <!-- begin::Main Content -->
-        <div class="space-y-10">
+        <div class="space-y-10 mb-5">
             <!-- begin::Content Item -->
             <a-skeleton v-if="isLoading" :active="true" />
             <a-list item-layout="vertical" size="large" :data-source="data" :pagination="pagination" v-else>
                 <template #header>
-        				<div class="text-xl font-semibold">Danh sách bài viết</div>
+                                				<div class="text-xl font-semibold">Danh sách bài viết</div>
 </template>
 
 <template #renderItem="{ item, index }">
@@ -43,7 +38,7 @@
         <div class="border rounded-lg overflow-hidden flex flex-row h-full post-item">
             <router-link :to="{ name: 'post-detail', params: { id: item.id } }" class="block">
                 <div class="relative h-48">
-                    <img :src="apiURL.URL + item.post_image?.[0]?.image_path" class="w-full h-full object-cover" alt="Post Image" />
+                    <img :src="item.post_image?.[0]?.image_path" class="w-full h-full object-cover" alt="Post Image" />
                     <div v-if="item.priority_status !== 'không yêu cầu'" class="absolute top-2 left-2 px-2 py-1 text-white bg-red-500 rounded">
                         {{ item.priority_status }}
                     </div>
@@ -53,21 +48,21 @@
                         {{ item.title }}
                     </h2>
                     <div class="flex align-items-center">
-                        <div class="text-red-500 text-base mr-5">
-                            {{ formatMoney(item.price) }}
+                        <div class="text-red-500 text-base mr-1">
+                            {{ formatMoney(item.price) }} -
                         </div>
+                        
                         <div class="text-red-500 text-base">
                             {{ item.area }} m<sup>2</sup>
                         </div>
                     </div>
                     <div class="mt-2 line-clamp-2">{{ item.address }}</div>
-                    <div class="mt-2 line-clamp-2">{{ item.description }}</div>
                     <a-divider class="my-3" />
                     <div class="flex items-center">
                         <a-avatar class="me-2" :style="{
-        							  backgroundColor: '#ADC178',
-        							  verticalAlign: 'middle',
-        							}">
+                                							  backgroundColor: '#ADC178',
+                                							  verticalAlign: 'middle',
+                                							}">
                             {{ item.user.name[0] }}
                         </a-avatar>
                         <div class="flex flex-col">
@@ -89,7 +84,7 @@
 	<!-- end::Primary Content -->
 
 	<!-- begin::Sidebar -->
-	<SidebarFilter class="fixed right-20" />
+	<SidebarFilter class="fixed right-[14.5vw] sidebar-filter" />
 	<!-- end::Sidebar -->
 </template>
 
@@ -292,7 +287,7 @@ const getColorTagByPriorityStatus = (priority_status) => {
 };
 
 const pagination = reactive({
-    showSizeChanger: true,
+    showSizeChanger: false,
     responsive: true,
     current: currentPage.value,
     showLessItems: true,
@@ -350,6 +345,16 @@ export default {
 </script>
 
 <style>
+.sidebar-filter{
+    max-width: 150px;
+}
+.ant-list-pagination {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .banner .ant-modal-content {
     padding: 0 !important;
 }

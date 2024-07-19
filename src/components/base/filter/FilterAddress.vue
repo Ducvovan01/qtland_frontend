@@ -21,11 +21,11 @@
 				<a-button type="primary" @click="onSubmit">Tìm kiếm</a-button>
 			</div>
 		</template>
-		<div class="filter-item-content" @click="setModalAddressVisible(true)">
-			<div class="flex text-black">
+		<div class="filter-item-content " @click="setModalAddressVisible(true)">
+			<div class="flex text-black justify-between">
 				<div>Khu vực</div>
 				<div
-					class="ml-2 flex align-items-center"
+					class="mr-2 flex align-items-center"
 					v-if="props.type === 'user'"
 				>
 					<DownOutlined />
