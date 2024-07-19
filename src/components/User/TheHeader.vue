@@ -2,20 +2,14 @@
 	<!-- begin::Header -->
 	<div class="app-header">
 		<!-- begin::Header Container -->
-		<div class="app-container fixed-top z-10 bg-primary-white-color">
+		<div class="app-container fixed-top z-10 bg-primary-white-color mr-auto ml-auto">
 			<!-- begin::Header Wrapper -->
-			<div class="flex justify-between w-100 h-[64px]">
+			<div class="flex justify-between w-[80%] h-[100px] mr-auto ml-auto">
 				<!-- begin::Logo -->
-				<div
-					class="app-header-logo flex align-items-center justify-center gap-2 me-lg-5"
-				>
+				<div class="app-header-logo flex align-items-center justify-center gap-2 ml-[150px] w-100">
 					<div @click="handleLogoClick" class="cursor-pointer">
 						<!-- begin::Logo Image -->
-						<img
-							src="../../assets/logo/logo-2.png"
-							alt="Logo"
-							class="app-header-logo-image w-[81px] h-[48px]"
-						/>
+						<img src="../../assets/logo/logo-2.png" alt="Logo" class="app-header-logo-image w-[100px] h-[64px]" />
 						<!-- end::Logo Image -->
 					</div>
 					<!-- end::Logo -->
@@ -26,82 +20,78 @@
 					<!-- begin::Control Menu Item -->
 					<div class="app-control-menu-item">
 						<!-- begin::Authenticated -->
-						<div
-							class="flex align-items-center divide-x"
-							v-if="store.token"
-						>
+						<div class="flex align-items-center divide-x" v-if="store.token">
 							<!-- begin::Drawer -->
-							<div
-								class="n:px-2 md:px-4 block sm:hidden"
-								v-if="store.user.role_id == 1"
-							>
+							<div class="n:px-2 md:px-4 block sm:hidden" v-if="store.user.role_id == 1">
 								<TheMenu />
 							</div>
-
+	
 							<!-- end::Drawer -->
 							<!-- begin::Notification -->
 							<!-- <div class="n:pl-4 md:px-4">
-								<a-popover
-									placement="bottomRight"
-									trigger="click"
-									class="flex"
-								>
-									<template #content>
-										<div
-											class="max-h-[440px] max-w-[580px]"
+										<a-popover
+											placement="bottomRight"
+											trigger="click"
+											class="flex"
 										>
-											<div
-												class="flex align-items-center cursor-pointer p-2 hover:bg-slate-100"
-											>
-												<div class="type me-3">
-													<UserOutlined
-														:style="{
-															fontSize: '16px',
-														}"
-													/>
-												</div>
+											<template #content>
 												<div
-													class="flex flex-col content"
+													class="max-h-[440px] max-w-[580px]"
 												>
-													<div class="detail">
-														Đăng ký tham dự miễn phí
-														Báo cáo thị trường BĐS
-														Quý 1/2024
+													<div
+														class="flex align-items-center cursor-pointer p-2 hover:bg-slate-100"
+													>
+														<div class="type me-3">
+															<UserOutlined
+																:style="{
+																	fontSize: '16px',
+																}"
+															/>
+														</div>
+														<div
+															class="flex flex-col content"
+														>
+															<div class="detail">
+																Đăng ký tham dự miễn phí
+																Báo cáo thị trường BĐS
+																Quý 1/2024
+															</div>
+															<div class="day">
+																20/10/2024
+															</div>
+														</div>
 													</div>
-													<div class="day">
-														20/10/2024
+													<div
+														class="flex align-items-center cursor-pointer p-2 hover:bg-slate-100"
+													>
+														<div class="type me-3">
+															<ClockCircleOutlined
+																:style="{
+																	fontSize: '16px',
+																}"
+															/>
+														</div>
+														<div
+															class="flex flex-col content"
+														>
+															<div class="detail">
+																Số điện thoại 0373388843
+																đã được thêm vào danh
+																sách liên lạc của bạn.
+																Xem chi tiết tại đây.
+															</div>
+															<div class="day">
+																20/10/2024
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div
-												class="flex align-items-center cursor-pointer p-2 hover:bg-slate-100"
-											>
-												<div class="type me-3">
-													<ClockCircleOutlined
-														:style="{
-															fontSize: '16px',
-														}"
-													/>
-												</div>
-												<div
-													class="flex flex-col content"
-												>
-													<div class="detail">
-														Số điện thoại 0373388843
-														đã được thêm vào danh
-														sách liên lạc của bạn.
-														Xem chi tiết tại đây.
-													</div>
-													<div class="day">
-														20/10/2024
-													</div>
-												</div>
-											</div>
-										</div>
-									</template>
-									<template #title>
-										<h2>Thông báo</h2>
-									</template>
+</template>
+
+<template #title>
+	<h2>
+		Thông báo</h2>
+</template>
 									<a-badge>
 										<a-button
 											class="flex justify-center align-items-center w-16"
@@ -124,56 +114,40 @@
 									:placement="'bottomLeft'"
 									trigger="click"
 								>
-									<template #overlay>
-										<a-menu>
-											<a-menu-item
-												key="1"
-												v-if="
-													store.user.role_id == 2 ||
-													store.user.role_id == 5
-												"
-												class="py-2"
-											>
-												<div
-													class="inline-flex items-center mr-3"
-												>
-													<BarChartOutlined />
-												</div>
-												<div class="inline-flex">
-													Quản lý tin đăng
-												</div>
-												<router-link
-													:to="{
-														name: 'post-manage',
-													}"
-												></router-link>
-											</a-menu-item>
-											<a-menu-item key="2">
-												<div
-													class="inline-flex items-center mr-3"
-												>
-													<InfoOutlined />
-												</div>
-												<div class="inline-flex">
-													Thay đổi thông tin cá nhân
-												</div>
-											</a-menu-item>
-											<a-menu-item
-												key="3"
-												@click="onLogout"
-												class=""
-											>
-												<div
-													class="inline-flex items-center mr-3"
-												>
-													<LogoutOutlined />
-												</div>
-												<div class="inline-flex">
-													Đăng xuất
-												</div>
-											</a-menu-item>
-										</a-menu>
-									</template>
+<template #overlay>
+	<a-menu>
+		<a-menu-item key="1" v-if="
+															store.user.role_id == 2 ||
+															store.user.role_id == 5
+														" class="py-2">
+			<div class="inline-flex items-center mr-3">
+				<BarChartOutlined />
+			</div>
+			<div class="inline-flex">
+				Quản lý tin đăng
+			</div>
+			<router-link :to="{
+																name: 'post-manage',
+															}"></router-link>
+		</a-menu-item>
+		<a-menu-item key="2">
+			<div class="inline-flex items-center mr-3">
+				<InfoOutlined />
+			</div>
+			<div class="inline-flex">
+				Thay đổi thông tin cá nhân
+			</div>
+		</a-menu-item>
+		<a-menu-item key="3" @click="onLogout" class="">
+			<div class="inline-flex items-center mr-3">
+				<LogoutOutlined />
+			</div>
+			<div class="inline-flex">
+				Đăng xuất
+			</div>
+		</a-menu-item>
+	</a-menu>
+</template>
 									<div
 										class="flex justify-center align-items-center cursor-pointer"
 									>
@@ -371,6 +345,7 @@
 	</div>
 	<!-- end::Header -->
 </template>
+
 <script setup>
 import { ref, h } from "vue";
 import {
@@ -403,7 +378,7 @@ const onLogout = async () => {
 				"Token hết hạn hoặc truy cập trái phép. Chuyển hướng đến trang đăng nhập."
 			);
 			store.logout();
-			router.push({ name: "login" }); 
+			router.push({ name: "login" });
 		} else {
 			console.error("Lỗi đăng xuất:", response.data);
 		}
@@ -432,4 +407,7 @@ const showChildrenDrawer = () => {
 import TheMenu from "../TheMenu.vue";
 export default {};
 </script>
-<style></style>
+
+<style>
+
+</style>

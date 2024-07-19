@@ -1,7 +1,7 @@
 <template>
-	<div class="flex flex-col d-none d-xl-flex col-lg-2">
+	<div class="flex flex-col d-none d-xl-flex" :class="columnClass">
 		<!-- begin::Sidebar Box -->
-		<div class="flex-col mb-3 border-1 sidebar-box">
+		<div class="flex-col mb-3 sidebar-box">
 			<!-- begin::Author -->
 			<slot name="author"></slot>
 			<!-- end::Author -->
@@ -145,10 +145,15 @@ const setPrice = (min, max) => {
 		},
 	});
 };
+const columnClass = computed(() => {
+      return router.currentRoute.value.fullPath === '/post' ? '' : 'col-lg-2';
+});
 </script>
 
 <script>
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

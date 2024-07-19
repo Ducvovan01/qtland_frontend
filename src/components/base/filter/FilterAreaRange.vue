@@ -1,76 +1,57 @@
 <template>
     <a-popover placement="bottomLeft" trigger="click" class="flex">
         <template #title>
-            <div>Chọn khu vực</div>
-        </template>
-        <template #content>
-            <div class="flex mt-3 w-[300px]">
-                <a-input-number
-                    v-model:value="area[0]"
-                    :step="5"
-                    :formatter="
-                        (value) =>
-                            value
-                                ? `${value}`.replace(
-                                      /\B(?=(\d{3})+(?!\d))/g,
-                                      ','
-                                  )
-                                : 0
-                    "
-                    :parser="(value) => value.replace(/\$\s?|(,*)/g, '')"
-                    class="w-80 col-5"
-                />
-                <div class="col-2 flex align-items-center justify-center">
-                    <ArrowRightOutlined />
-                </div>
-                <a-input-number
-                    v-model:value="area[1]"
-                    :min="min"
-                    :max="max"
-                    :step="5"
-                    :formatter="
-                        (value) =>
-                            value
-                                ? `${value}`.replace(
-                                      /\B(?=(\d{3})+(?!\d))/g,
-                                      ','
-                                  )
-                                : 0
-                    "
-                    :parser="(value) => value.replace(/\$\s?|(,*)/g, '')"
-                    class="w-80 col-5"
-                />
+                <div>Chọn khu vực</div>
+</template>
+
+<template #content>
+    <div class="flex mt-3 w-[300px]">
+        <a-input-number v-model:value="area[0]" :step="5" :formatter="
+                            (value) =>
+                                value
+                                    ? `${value}`.replace(
+                                          /\B(?=(\d{3})+(?!\d))/g,
+                                          ','
+                                      )
+                                    : 0
+                        " :parser="(value) => value.replace(/\$\s?|(,*)/g, '')" class="w-80 col-5" />
+        <div class="col-2 flex align-items-center justify-center">
+            <ArrowRightOutlined />
+        </div>
+        <a-input-number v-model:value="area[1]" :min="min" :max="max" :step="5" :formatter="
+                            (value) =>
+                                value
+                                    ? `${value}`.replace(
+                                          /\B(?=(\d{3})+(?!\d))/g,
+                                          ','
+                                      )
+                                    : 0
+                        " :parser="(value) => value.replace(/\$\s?|(,*)/g, '')" class="w-80 col-5" />
+    </div>
+    <div>
+        <a-slider range :min="0" :max="1000" :step="5" v-model:value="area">
+        </a-slider>
+    </div>
+    <div class="filter-list">
+        <a-button class="filter-list-item" v-for="item in filterList">
+            <div class="w-100" @click="setArea(item.min, item.max)">
+                {{ item.min }} - {{ item.max }} m&sup2
             </div>
-            <div>
-                <a-slider
-                    range
-                    :min="0"
-                    :max="1000"
-                    :step="5"
-                    v-model:value="area"
-                >
-                </a-slider>
-            </div>
-            <div class="filter-list">
-                <a-button class="filter-list-item" v-for="item in filterList">
-                    <div class="w-100" @click="setArea(item.min, item.max)">
-                        {{ item.min }} - {{ item.max }} m&sup2
-                    </div>
-                </a-button>
-            </div>
-            <a-divider />
-            <div class="flex justify-between">
-                <a-button @click="setArea(0, 1000)">Đặt lại</a-button>
-                <a-button type="primary">
-                    <div @click="setArea(area[0], area[1])">Tìm kiếm</div>
-                </a-button>
-            </div>
-        </template>
+        </a-button>
+    </div>
+    <a-divider />
+    <div class="flex justify-between">
+        <a-button @click="setArea(0, 1000)">Đặt lại</a-button>
+        <a-button type="primary">
+            <div @click="setArea(area[0], area[1])">Tìm kiếm</div>
+        </a-button>
+    </div>
+</template>
         <div class="filter-item-content">
-            <div class="flex align-items-center text-black">
+            <div class="flex align-items-center text-black justify-between">
                 <div>Diện tích</div>
                 <div
-                    class="ml-2 flex align-items-center"
+                    class="mr-2 flex align-items-center"
                     v-if="props.type === 'user'"
                 >
                     <DownOutlined />
@@ -150,8 +131,7 @@ watch(
     area,
     (newArea, oldArea) => {
         filterRangeStore.setAreaRange(newArea[0], newArea[1]);
-    },
-    { deep: true }
+    }, { deep: true }
 );
 const computedRangeArea = computed(() => {
     const { getMinArea, getMaxArea } = filterRangeStore;
@@ -161,7 +141,7 @@ const computedRangeArea = computed(() => {
     const isMaxAreaMax = maxArea === 1000;
 
     if (isMinAreaZero && isMaxAreaMax) {
-        return "Tất cả";
+        return "";
     }
 
     const formatArea = (area) => `${area} m²`;
@@ -178,4 +158,6 @@ const computedRangeArea = computed(() => {
 export default {};
 </script>
 
-<style></style>
+<style>
+
+</style>

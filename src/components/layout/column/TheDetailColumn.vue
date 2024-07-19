@@ -552,7 +552,6 @@ const onSubmit = async () => {
 		}
 
 		if (postId) {
-			console.log(data.priority_status);
 			const response = await updatePostAPI.update(postId, data);
 			if (response.status == 200) {
 				message.success("Cập nhật bài viết thành công");

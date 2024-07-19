@@ -2,7 +2,7 @@
     <!-- begin::Content -->
     <div class="bg-slate-50">
         <!-- begin::Content Container -->
-        <div class="app-container pt-[56px]">
+        <div class="app-container pt-[40px]">
             <!-- begin::Content Wrapper -->
             <div class="flex ml-auto mr-auto w-full xl:w-4/5">
                 <router-view></router-view>
@@ -23,4 +23,7 @@ export default {
     },
 };
 </script>
-<style scoped></style>
+
+<style scoped>
+
+</style>

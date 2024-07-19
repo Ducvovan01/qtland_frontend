@@ -22,10 +22,10 @@
 			</div>
 		</template>
 		<div class="filter-item-content" @click="setModalAddressVisible(true)">
-			<div class="flex text-black">
+			<div class="flex text-black justify-between">
 				<div>Khu vực 123</div>
 				<div
-					class="ml-2 flex align-items-center"
+					class="mr-2 flex align-items-center"
 					v-if="props.type === 'user'"
 				>
 					<DownOutlined />
